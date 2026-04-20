@@ -1,0 +1,25 @@
+{
+  "id": "283b7e8c-dfbe-4a4d-859d-ebdd9207f6ae",
+  "pipeline_type": "WORKSPACE",
+  "name": "uber_rides_ingest",
+  "configuration": {
+    "EH_NAMESPACE": "",
+    "EH_NAME": "",
+    "EH_CONN_STR": ""
+  },
+  "libraries": [
+    {
+      "glob": {
+        "include": "/Workspace/Users/ernestau7@gmail.com/Uber_Project/uber-realtime-lakehouse-sdp/databricks/uber_rides_ingest/transformations/**"
+      }
+    }
+  ],
+  "schema": "bronze",
+  "continuous": false,
+  "development": false,
+  "photon": true,
+  "channel": "CURRENT",
+  "catalog": "uber_catalog",
+  "serverless": true,
+  "root_path": "/Workspace/Users/ernestau7@gmail.com/Uber_Project/uber-realtime-lakehouse-sdp/databricks/uber_rides_ingest"
+}

@@ -1,0 +1,29 @@
+resources:
+  jobs:
+    uber_streaming_job:
+      name: uber_streaming_job
+      tasks:
+        - task_key: bronze_adls
+          notebook_task:
+            notebook_path: /Workspace/Users/ernestau7@gmail.com/Uber_Project/bronze_adls
+            source: WORKSPACE
+        - task_key: jinja_template
+          depends_on:
+            - task_key: bronze_adls
+          notebook_task:
+            notebook_path: /Workspace/Users/ernestau7@gmail.com/Uber_Project/jinja
+            source: WORKSPACE
+          environment_key: Default
+        - task_key: streaming_pipeline
+          depends_on:
+            - task_key: jinja_template
+          pipeline_task:
+            pipeline_id: 283b7e8c-dfbe-4a4d-859d-ebdd9207f6ae
+            full_refresh: false
+      queue:
+        enabled: true
+      environments:
+        - environment_key: Default
+          spec:
+            environment_version: "5"
+      performance_target: PERFORMANCE_OPTIMIZED
